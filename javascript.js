@@ -1,49 +1,59 @@
 
-let size = 50;
+let gridSize = 32;
 let clicked = false;
 let exists = false
 let color = "red";
-let innerDiv = new Array(size);
-let outerDiv = new Array(size);
+let innerDiv = new Array(gridSize);
+let outerDiv = new Array(gridSize);
 
 let container = document.querySelector("#container");
 let erase = document.querySelector("#erase");
 let slider = document.querySelector("#myRange");
 let sliderValue = document.querySelector("#sliderValue");
+let palette = document.querySelector("#head");
 
-slider.oninput = function() {
+palette.addEventListener("input", updateColor);
+function updateColor(event) {
+      color = event.target.value;
+    };
+
+sliderValue.textContent = `${slider.value} x ${slider.value}`; 
+
+slider.addEventListener("input",function() {
     sliderValue.textContent = `${this.value} x ${this.value}`;
-  }
+  });
+slider.addEventListener("mouseup", function(){
+    gridSize = slider.value;
+    console.log(gridSize);
+    newGrid(gridSize);
+})
 
-erase.addEventListener("click",newPaint);
+erase.addEventListener("click",newGrid);
 
-start(size);
+createGrid(gridSize);
 
-function newPaint(){
-    if(!exists){
-        return;
-    }
+function newGrid(){
 
-    for(let i = 0; i < size; i++){
+    for(let i = 0; i < outerDiv.length; i++){
         container.removeChild(outerDiv[i]);
     }
 
-    innerDiv = new Array(size);
-    outerDiv = new Array(size);
-    exists = false;
+    innerDiv.length = gridSize;
+    outerDiv.length = gridSize;
 
-    start(size);
+
+    createGrid(gridSize);
 }
 
-function start(size){
+function createGrid(gridSize){
 
-    for(let i = 0; i < size ; i++){
+    for(let i = 0; i < gridSize ; i++){
 
         outerDiv[i] = document.createElement("div");
         outerDiv[i].style.cssText = "display:flex; justify-content:space-evenly; flex-grow:1; flex-shrink:1;            overflow:hidden; "
         container.appendChild(outerDiv[i]);
 
-        for(let j = 0; j < size; j++){
+        for(let j = 0; j < gridSize; j++){
 
             innerDiv[j] = document.createElement("div");
 

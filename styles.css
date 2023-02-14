@@ -1,7 +1,9 @@
 body {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
 }
 #container {
     display:flex;
@@ -37,6 +39,7 @@ body {
 }
 .slider {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 15px;
     border-radius: 5px;  
@@ -67,4 +70,23 @@ body {
 #sliderValue {
     text-align: center;
     font-size : 20px;
+}
+#buttons #head {
+    -webkit-appearance: none;
+    -mozkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    border:none;
+    cursor:pointer;
+    box-shadow: 2px #888888;
+}
+#head::-webkit-color-swatch {
+    border-radius: 50%;
+    border: 2px solid black;
+}
+#head::-moz-color-swatch {
+    border-radius: 50%;
+    border: 2px solid black;
 }
