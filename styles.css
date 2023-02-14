@@ -5,13 +5,17 @@ body {
     align-items: center;
     box-sizing: border-box;
 }
+#both-sides{
+    display: flex;
+    gap: 35px;
+}
 #container {
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
     border: 1px solid black;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
 }
 .colored {
     background-color: green;
@@ -21,13 +25,15 @@ body {
     font-weight: bold;
     font-family: "system-ui";
     color:#ca120d;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
-#buttons {
+
+#buttons-down {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    width: 600px;
+    margin-top: 10px;
+    gap: 15px;
+    width: 500px;
+    align-items: center;
 }
 #erase {
     font-size: 25px;
@@ -71,7 +77,7 @@ body {
     text-align: center;
     font-size : 20px;
 }
-#buttons #head {
+#buttons-right #head {
     -webkit-appearance: none;
     -mozkit-appearance: none;
     appearance: none;
@@ -89,4 +95,23 @@ body {
 #head::-moz-color-swatch {
     border-radius: 50%;
     border: 2px solid black;
+}
+#sliderTab {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+img{
+    height: 75px;
+    width: auto;
+    
+}
+#right-side {
+   
+    width: 250px;
+}
+#icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
