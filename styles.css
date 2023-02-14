@@ -1,9 +1,8 @@
 body {
     display: flex;
-    justify-content: center;
-    pointer-events:auto;
+    flex-direction: column;
+    align-items: center;
 }
-
 #container {
     display:flex;
     flex-direction: column;
@@ -12,7 +11,22 @@ body {
     width: 600px;
     height: 600px;
 }
-
 .colored {
     background-color: green;
+}
+#title {
+    font-size: 60px;
+    font-weight: bold;
+    font-family: "system-ui";
+    color:#ca120d;
+    margin-bottom: 20px;
+}
+#buttons {
+    margin-bottom: 20px;
+}
+#erase {
+    font-size: 25px;
+    border-radius: 5px;
+    color: #ded4ac;
+    background-color: #b04614;
 }

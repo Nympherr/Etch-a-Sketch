@@ -1,43 +1,63 @@
 
-let x = 50;
-let y = 50;
+let size = 50;
 let clicked = false;
-let color = "green";
-
-let innerDiv = new Array(x);
-let outerDiv = new Array(y);
+let exists = false
+let color = "red";
+let innerDiv = new Array(size);
+let outerDiv = new Array(size);
 
 let container = document.querySelector("#container");
+let erase = document.querySelector("#erase");
+erase.addEventListener("click",newPaint);
 
-for(let i = 0; i < x ; i++){
+start(size);
 
-    outerDiv[i] = document.createElement("div");
-    outerDiv[i].style.cssText = "display:flex; justify-content:space-evenly; flex-grow:1; flex-shrink:1; overflow:hidden; "
-    container.appendChild(outerDiv[i]);
+function newPaint(){
+    if(!exists){
+        return;
+    }
 
-    for(let j = 0; j < y; j++){
+    for(let i = 0; i < size; i++){
+        container.removeChild(outerDiv[i]);
+    }
 
-        innerDiv[j] = document.createElement("div");
+    innerDiv = new Array(size);
+    outerDiv = new Array(size);
+    exists = false;
 
-        innerDiv[j].addEventListener("mousedown", function(){
-            this.style.backgroundColor = color;
-            clicked = true;
-        });
-        innerDiv[j].addEventListener("mouseover", function(){
-            if(clicked){
-                this.style.backgroundColor = color;
-            }
-        });
-        innerDiv[j].addEventListener("mouseup", function(){
-            clicked = false;
-        });
+    start(size);
+}
 
-        innerDiv[j].style.cssText = " display:flex; flex-grow:1; flex-shrink:1;";
-        innerDiv[j].textContent = " ";
-        outerDiv[i].appendChild(innerDiv[j]);
+function start(size){
+
+    for(let i = 0; i < size ; i++){
+
+        outerDiv[i] = document.createElement("div");
+        outerDiv[i].style.cssText = "display:flex; justify-content:space-evenly; flex-grow:1; flex-shrink:1;            overflow:hidden; "
+        container.appendChild(outerDiv[i]);
+
+        for(let j = 0; j < size; j++){
+
+            innerDiv[j] = document.createElement("div");
+
+            innerDiv[j].addEventListener("mousedown", mouseDown);
+            innerDiv[j].addEventListener("mouseover", mouseOver);
+            innerDiv[j].addEventListener("mouseup", ()=> clicked = false);
+
+            innerDiv[j].style.cssText = " display:flex; flex-grow:1; flex-shrink:1;";
+            innerDiv[j].textContent = " ";
+            outerDiv[i].appendChild(innerDiv[j]);
+        }
     }
 }
 
-function colorChange(){
-    this.classList.add("colored");
+function mouseDown(){
+    this.style.backgroundColor = color;
+    clicked = true;
+    exists = true;
+}
+function mouseOver(){
+    if(clicked){
+        this.style.backgroundColor = color;
+    }
 }
