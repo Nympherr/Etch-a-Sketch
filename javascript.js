@@ -8,6 +8,13 @@ let outerDiv = new Array(size);
 
 let container = document.querySelector("#container");
 let erase = document.querySelector("#erase");
+let slider = document.querySelector("#myRange");
+let sliderValue = document.querySelector("#sliderValue");
+
+slider.oninput = function() {
+    sliderValue.textContent = `${this.value} x ${this.value}`;
+  }
+
 erase.addEventListener("click",newPaint);
 
 start(size);
