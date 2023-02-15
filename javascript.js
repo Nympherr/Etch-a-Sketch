@@ -1,7 +1,6 @@
 
 let gridSize = 32;
 let clicked = false;
-let exists = false
 let color = "red";
 let innerDiv = new Array(gridSize);
 let outerDiv = new Array(gridSize);
@@ -51,30 +50,40 @@ function createGrid(gridSize){
 
         outerDiv[i] = document.createElement("div");
         outerDiv[i].style.cssText = "display:flex; justify-content:space-evenly; flex-grow:1; flex-shrink:1;            overflow:hidden; "
+        outerDiv[i].classList.add("outerDiv");
         container.appendChild(outerDiv[i]);
 
         for(let j = 0; j < gridSize; j++){
 
             innerDiv[j] = document.createElement("div");
-
-            innerDiv[j].addEventListener("mousedown", mouseDown);
-            innerDiv[j].addEventListener("mouseover", mouseOver);
-            innerDiv[j].addEventListener("mouseup", ()=> clicked = false);
-
+            innerDiv[j].classList.add("innerDiv");
             innerDiv[j].style.cssText = " display:flex; flex-grow:1; flex-shrink:1;";
-            innerDiv[j].textContent = " ";
+            innerDiv[j].textContent = "";
             outerDiv[i].appendChild(innerDiv[j]);
         }
     }
 }
 
-function mouseDown(){
-    this.style.backgroundColor = color;
-    clicked = true;
-    exists = true;
-}
-function mouseOver(){
-    if(clicked){
-        this.style.backgroundColor = color;
+container.addEventListener("mousedown", function(event) {
+
+    event.preventDefault();
+
+    if (event.target.classList.contains("innerDiv")) {
+        setTimeout(function() {
+
+            const element = event.target;
+            element.style.backgroundColor = color;
+            clicked = true;
+          }, 35); 
+        }
+    });
+
+container.addEventListener("mousemove", function(event) {
+    if (clicked && event.target.classList.contains("innerDiv")) {
+        const element = event.target;
+        element.style.backgroundColor = color
     }
-}
+});
+
+document.addEventListener("mouseup", ()=> clicked = false);
+
