@@ -49,6 +49,15 @@ borders.addEventListener("click", function(){
     }
 })
 
+fill.addEventListener("click", function(){
+    for(let i = 0; i < gridSize ; i++){
+        for(let j = 0; j<gridSize; j++){
+            const element = outerDiv[i].childNodes[j];
+            element.style.backgroundColor = palette.value;
+        }
+    }
+})
+
 palette.addEventListener("input", updateColor);
 function updateColor(event) {
     eraser.classList.remove("clicked");
