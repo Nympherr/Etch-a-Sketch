@@ -105,7 +105,7 @@ function createGrid(gridSize){
 
             innerDiv[j] = document.createElement("div");
             innerDiv[j].classList.add("innerDiv");
-            innerDiv[j].style.cssText = " display:flex; flex-grow:1; flex-shrink:1;";
+            innerDiv[j].style.cssText = " display:flex; flex-grow:1; flex-shrink:1; background-color:white;";
             innerDiv[j].textContent = "";
             outerDiv[i].appendChild(innerDiv[j]);
         }
