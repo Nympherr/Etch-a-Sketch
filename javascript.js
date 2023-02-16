@@ -4,12 +4,29 @@ let clicked = false;
 let color = "red";
 let innerDiv = new Array(gridSize);
 let outerDiv = new Array(gridSize);
+let mode = "colorMode";
 
 let container = document.querySelector("#container");
-let erase = document.querySelector("#erase");
+let clear = document.querySelector("#clear");
 let slider = document.querySelector("#myRange");
 let sliderValue = document.querySelector("#sliderValue");
 let palette = document.querySelector("#head");
+let eraser = document.querySelector("#eraser");
+let fill = document.querySelector("#fill");
+let borders = document.querySelector("#borders");
+
+eraser.addEventListener("click", function(){
+    color = "white";
+    eraser.classList.toggle("clicked");
+})
+fill.addEventListener("click", function(){
+    color = "white";
+    fill.classList.toggle("clicked");
+})
+borders.addEventListener("click", function(){
+    color = "white";
+    borders.classList.toggle("clicked");
+})
 
 palette.addEventListener("input", updateColor);
 function updateColor(event) {
@@ -27,7 +44,7 @@ slider.addEventListener("mouseup", function(){
     newGrid(gridSize);
 })
 
-erase.addEventListener("click",newGrid);
+clear.addEventListener("click",newGrid);
 
 createGrid(gridSize);
 

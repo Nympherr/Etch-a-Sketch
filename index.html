@@ -14,29 +14,41 @@
     <div id="title">Etch-a-Sketch</div>
 
     <div id="both-sides">
-    <div id="left-side">
-    <div id="container">
-    </div>
 
-    <div id="buttons-down">
-        <div id="sliderTab">
-            <p id="sliderValue"></p>
-            <input type="range" min="1" max="64" value="32" class="slider" id="myRange">
+        <div id="left-side">
+
+            <div id="container"> </div>
+
+            <div id="buttons-down">
+                <div id="sliderTab">
+                    <p id="sliderValue"></p>
+                    <input type="range" min="1" max="64" value="32" class="slider" id="myRange">
+                </div>
+                <button id="clear">Clear</button>
+            </div>
         </div>
-        <button id="erase">Clear</button>
-    </div>
-    </div>
-    <div id="right-side">
-        <div id="icon">
-    <img src="./images/paint-tool.webp" id="image">
-    <label for="image">TOOLS</label>
-    </div>
-    <div id="buttons-right">
-        <input type="color" id="head" name="head"
-        value="#e66465">
-    </div>
 
-    </div>
+        <div id="right-side">
+            <div id="icon">
+                <img src="./images/paint-tool.webp" id="image">
+                <label for="image">TOOLS</label>
+            </div>
+            <div id="colorPalette">
+                <input type="color" id="head" name="head"
+                value="#e66465">
+            </div>
+            <div>
+                <button id="eraser">Eraser</button>
+            </div>
+            <div>
+                <button id="fill">Fill</button>
+            </div>
+            <div>
+                <button id="borders">See Borders</button>
+            </div>
+
+        </div>
+
     </div>
 
 </body>
