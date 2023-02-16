@@ -1,7 +1,6 @@
 
 let gridSize = 32;
 let clicked = false;
-let color = "red";
 let innerDiv = new Array(gridSize);
 let outerDiv = new Array(gridSize);
 let mode = "colorMode";
@@ -15,22 +14,45 @@ let eraser = document.querySelector("#eraser");
 let fill = document.querySelector("#fill");
 let borders = document.querySelector("#borders");
 
+let color = palette.value;
+
 eraser.addEventListener("click", function(){
-    color = "white";
+
     eraser.classList.toggle("clicked");
+    if(eraser.classList.contains("clicked")){
+        color = "white";
+    }
+    else{
+        color = palette.value;
+    }
 })
-fill.addEventListener("click", function(){
-    color = "white";
-    fill.classList.toggle("clicked");
-})
+
 borders.addEventListener("click", function(){
-    color = "white";
+
     borders.classList.toggle("clicked");
+
+    if(borders.classList.contains("clicked")){
+        for(let i = 0; i < gridSize ; i++){
+            for(let j = 0; j<gridSize; j++){
+                const element = outerDiv[i].childNodes[j];
+                element.classList.add("divs");
+            }
+        }
+    }
+    else{
+        for(let i = 0; i < gridSize ; i++){
+            for(let j = 0; j<gridSize; j++){
+                const element = outerDiv[i].childNodes[j];
+                element.classList.remove("divs");
+            }
+        }
+    }
 })
 
 palette.addEventListener("input", updateColor);
 function updateColor(event) {
-      color = event.target.value;
+    eraser.classList.remove("clicked");
+    color = event.target.value;
     };
 
 sliderValue.textContent = `${slider.value} x ${slider.value}`; 
@@ -77,6 +99,14 @@ function createGrid(gridSize){
             innerDiv[j].style.cssText = " display:flex; flex-grow:1; flex-shrink:1;";
             innerDiv[j].textContent = "";
             outerDiv[i].appendChild(innerDiv[j]);
+        }
+    }
+    if(borders.classList.contains("clicked")){
+        for(let i = 0; i < gridSize ; i++){
+            for(let j = 0; j<gridSize; j++){
+                const element = outerDiv[i].childNodes[j];
+                element.classList.add("divs");
+            }
         }
     }
 }

@@ -128,3 +128,6 @@ img{
 #right-side .clicked {
     background-color: red;
 }
+.divs {
+    border: 1px solid black;
+}
